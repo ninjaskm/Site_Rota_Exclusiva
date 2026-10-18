@@ -1,0 +1,40 @@
+<!-- TOPO -->
+<header class="topo">
+  <a class="marca" routerLink="/">
+    <span class="marca-nome">{{ site.nome }}</span>
+    <span class="marca-sub">Transporte Exclusivo</span>
+  </a>
+  <nav class="menu" aria-label="Menu principal">
+    <a routerLink="/" routerLinkActive="ativo" [routerLinkActiveOptions]="{ exact: true }">Home</a>
+    @for (plano of planos; track plano.id) {
+      <a [routerLink]="['/plano', plano.id]" routerLinkActive="ativo">{{ plano.titulo }}</a>
+    }
+    <a routerLink="/sobre" routerLinkActive="ativo">Sobre mim</a>
+  </nav>
+  <div class="topo-acoes">
+    <a class="btn-ouro topo-cta" [href]="linkGeral()" target="_blank" rel="noopener">
+      <span class="topo-cta-textos">
+        <span>Fale comigo</span>
+        <span class="topo-cta-numero">{{ telefone }}</span>
+      </span>
+      <svg class="icone-zap" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+    </a>
+    <div class="avatar">
+      @if (site.fotoPerfil) {
+        <img [src]="site.fotoPerfil" alt="Foto de perfil de {{ site.nome }}" />
+      } @else {
+        foto
+      }
+    </div>
+  </div>
+</header>
+
+<!-- CONTEÚDO (muda conforme a página) -->
+<router-outlet />
+
+<!-- RODAPÉ -->
+<footer class="rodape">
+  <span class="rodape-nome">{{ site.nome }}</span>
+  <span class="rodape-servicos">Motorista particular · Turismo · Chofer</span>
+  <span class="rodape-copy">© {{ ano }} Todos os direitos reservados</span>
+</footer>

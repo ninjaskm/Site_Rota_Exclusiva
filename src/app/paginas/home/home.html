@@ -1,0 +1,50 @@
+<!-- APRESENTAÇÃO -->
+<section class="apresentacao">
+  <div class="selo">
+    <span class="selo-linha"></span>
+    <span class="selo-texto">Atendimento exclusivo</span>
+    <span class="selo-linha"></span>
+  </div>
+  <h1>Não é só chegar. É aproveitar o caminho</h1>
+  <p>
+    Conforto, pontualidade e discrição em cada trajeto. Escolha abaixo o serviço ideal. Veja os
+    detalhes e fale comigo pelo WhatsApp.
+  </p>
+</section>
+
+<!-- FOTO DO CARRO (liga/desliga em site.config.ts > carroEm.inicio) -->
+@if (site.fotoCarro && site.carroEm.inicio) {
+  <div class="faixa-carro">
+    <figure class="foto-carro">
+      <img [src]="site.fotoCarro" alt="Carro de {{ site.nome }}" />
+    </figure>
+  </div>
+}
+
+<!-- CARTÕES -->
+<section class="cartoes">
+  @for (plano of planos; track plano.id) {
+    <article class="cartao">
+      <div class="cartao-topo">
+        <app-icone-plano [tipo]="plano.id" />
+      </div>
+
+      <h2>{{ plano.titulo }}</h2>
+      <p class="resumo">{{ plano.resumo }}</p>
+
+      <div class="cartao-acoes">
+        <a class="btn-ouro btn-cartao" [href]="linkPlano(plano)" target="_blank" rel="noopener">
+          <svg class="icone-zap" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-12.4 7.4L3 20.5l1.7-5.4A8.4 8.4 0 1 1 21 11.5z"/></svg>
+          Fale comigo
+        </a>
+        <a
+          class="btn-linha btn-mais"
+          [routerLink]="['/plano', plano.id]"
+          [attr.aria-label]="'Mais informações sobre ' + plano.titulo"
+        >
+          <svg class="seta-direita" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+      </div>
+    </article>
+  }
+</section>

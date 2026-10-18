@@ -1,0 +1,53 @@
+<section class="pagina">
+  <a class="voltar" routerLink="/">
+    <svg class="seta-esquerda" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>
+    Voltar
+  </a>
+
+  <div class="sobre-foto">
+    @if (site.fotoPerfil) {
+      <img [src]="site.fotoPerfil" alt="Foto de {{ site.nome }}" />
+    } @else {
+      foto
+    }
+  </div>
+
+  <span class="rotulo">Sobre mim</span>
+  <h1>{{ site.nome }}</h1>
+
+  @for (paragrafo of site.sobre; track $index) {
+    <p class="detalhe-texto" [class.saudacao]="$first">{{ paragrafo }}</p>
+  }
+
+  <!-- BLOCO DE DESTAQUE (texto em site.config.ts > sobreDestaque) -->
+  @if (site.sobreDestaque.titulo) {
+    <div class="destaque">
+      <h2>{{ site.sobreDestaque.titulo }}</h2>
+      <p class="detalhe-texto">{{ site.sobreDestaque.texto }}</p>
+      <div class="destaque-itens">
+        @for (item of site.sobreDestaque.itens; track item.titulo) {
+          <div class="destaque-item">
+            <span class="destaque-item-titulo">{{ item.titulo }}</span>
+            <span class="destaque-item-desc">{{ item.desc }}</span>
+          </div>
+        }
+      </div>
+    </div>
+  }
+
+  <!-- FOTO DO CARRO (liga/desliga em site.config.ts > carroEm.sobre) -->
+  @if (site.fotoCarro && site.carroEm.sobre) {
+    <figure class="foto-carro">
+      <img [src]="site.fotoCarro" alt="Carro de {{ site.nome }}" />
+    </figure>
+  }
+
+  @if (site.sobreFecho) {
+    <p class="detalhe-texto">{{ site.sobreFecho }}</p>
+  }
+
+  <a class="btn-ouro pagina-cta" [href]="linkGeral()" target="_blank" rel="noopener">
+    <svg class="icone-zap" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-12.4 7.4L3 20.5l1.7-5.4A8.4 8.4 0 1 1 21 11.5z"/></svg>
+    Fale comigo
+  </a>
+</section>

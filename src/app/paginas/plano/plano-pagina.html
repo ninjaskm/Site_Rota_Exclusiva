@@ -1,0 +1,52 @@
+<section class="pagina">
+  <a class="voltar" routerLink="/">
+    <svg class="seta-esquerda" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>
+    Voltar
+  </a>
+
+  @if (plano(); as p) {
+    <!-- FOTO DO CARRO (liga/desliga em site.config.ts > carroEm.planos) -->
+    @if (site.fotoCarro && site.carroEm.planos) {
+      <figure class="foto-carro">
+        <img [src]="site.fotoCarro" alt="Carro de {{ site.nome }}" />
+      </figure>
+    }
+
+    <div class="pagina-cabeca">
+      <app-icone-plano [tipo]="p.id" />
+    </div>
+
+    <h1>{{ p.titulo }}</h1>
+
+    <!-- FOTO DE PAISAGEM (só no Turismo; troque em site.config.ts > fotoPaisagem) -->
+    @if (p.id === 'turismo' && site.fotoPaisagem) {
+      <figure class="foto-paisagem">
+        <img [src]="site.fotoPaisagem" alt="Paisagem do litoral do Nordeste" />
+      </figure>
+    }
+
+    <p class="detalhe-texto">{{ p.resumo }}</p>
+    <p class="detalhe-texto">{{ p.detalhe }}</p>
+
+    <span class="rotulo">Serviços pré-montados</span>
+    <div class="servicos">
+      @for (servico of p.servicos; track servico.nome) {
+        <a class="servico" [href]="linkServico(p, servico.nome)" target="_blank" rel="noopener">
+          <span class="servico-textos">
+            <span class="servico-nome">{{ servico.nome }}</span>
+            <span class="servico-desc">{{ servico.desc }}</span>
+          </span>
+          <svg class="seta-direita" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+      }
+    </div>
+
+    <a class="btn-ouro pagina-cta" [href]="linkPlano(p)" target="_blank" rel="noopener">
+      <svg class="icone-zap" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-12.4 7.4L3 20.5l1.7-5.4A8.4 8.4 0 1 1 21 11.5z"/></svg>
+      Fale comigo
+    </a>
+    <a class="pagina-telefone" [href]="telefoneLink">{{ telefone }}</a>
+  } @else {
+    <h1>Página não encontrada</h1>
+  }
+</section>
