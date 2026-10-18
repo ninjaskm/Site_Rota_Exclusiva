@@ -1,0 +1,5 @@
+# Troque https://SEU-ENDERECO pelo endereço real do site (o mesmo de site.config.ts > url)
+User-agent: *
+Allow: /
+
+Sitemap: https://SEU-ENDERECO/sitemap.xml

@@ -8,7 +8,7 @@
     <!-- FOTO DO CARRO (liga/desliga em site.config.ts > carroEm.planos) -->
     @if (site.fotoCarro && site.carroEm.planos) {
       <figure class="foto-carro">
-        <img [src]="site.fotoCarro" alt="Carro de {{ site.nome }}" />
+        <img app-foto [arquivo]="site.fotoCarro" sizes="(max-width: 860px) 100vw, 860px" alt="Carro de {{ site.nome }}" />
       </figure>
     }
 
@@ -18,10 +18,10 @@
 
     <h1>{{ p.titulo }}</h1>
 
-    <!-- FOTO DE PAISAGEM (só no Turismo; troque em site.config.ts > fotoPaisagem) -->
-    @if (p.id === 'turismo' && site.fotoPaisagem) {
+    <!-- FOTO DE PAISAGEM (planos com mostraPaisagem em planos.ts; arquivo em site.config.ts > fotoPaisagem) -->
+    @if (p.mostraPaisagem && site.fotoPaisagem) {
       <figure class="foto-paisagem">
-        <img [src]="site.fotoPaisagem" alt="Paisagem do litoral do Nordeste" />
+        <img app-foto [arquivo]="site.fotoPaisagem" sizes="(max-width: 860px) 100vw, 860px" [prioridade]="true" alt="Passeio privativo pelo litoral de Pernambuco e do Nordeste" />
       </figure>
     }
 
@@ -41,10 +41,7 @@
       }
     </div>
 
-    <a class="btn-ouro pagina-cta" [href]="linkPlano(p)" target="_blank" rel="noopener">
-      <svg class="icone-zap" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-12.4 7.4L3 20.5l1.7-5.4A8.4 8.4 0 1 1 21 11.5z"/></svg>
-      Fale comigo
-    </a>
+    <a app-fale-comigo class="btn-ouro pagina-cta" [plano]="p"></a>
     <a class="pagina-telefone" [href]="telefoneLink">{{ telefone }}</a>
   } @else {
     <h1>Página não encontrada</h1>

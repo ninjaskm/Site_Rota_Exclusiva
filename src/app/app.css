@@ -248,19 +248,11 @@ h1 em {
 .cartao-topo {
   display: flex;
   align-items: center;
-  justify-content: space-between;
 }
 .icone {
   width: 44px;
   height: 44px;
   color: var(--gold);
-}
-.numero {
-  font-family: var(--serif);
-  font-style: italic;
-  font-size: 44px;
-  line-height: 1;
-  color: #3a362d;
 }
 h2 {
   margin: 0;
@@ -336,7 +328,6 @@ h2 {
 .pagina-cabeca {
   display: flex;
   align-items: center;
-  gap: 20px;
 }
 .pagina .detalhe-texto {
   max-width: 680px;
@@ -475,13 +466,6 @@ h2 {
 }
 
 /* ---------- Detalhes do plano ---------- */
-.detalhes {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  padding-top: 24px;
-  border-top: 1px solid var(--line);
-}
 .detalhe-texto {
   margin: 0;
   font-size: 15px;

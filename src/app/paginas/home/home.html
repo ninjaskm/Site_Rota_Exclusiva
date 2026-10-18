@@ -16,7 +16,7 @@
 @if (site.fotoCarro && site.carroEm.inicio) {
   <div class="faixa-carro">
     <figure class="foto-carro">
-      <img [src]="site.fotoCarro" alt="Carro de {{ site.nome }}" />
+      <img app-foto [arquivo]="site.fotoCarro" sizes="(max-width: 1280px) 100vw, 1280px" alt="Carro de {{ site.nome }}" />
     </figure>
   </div>
 }
@@ -33,10 +33,7 @@
       <p class="resumo">{{ plano.resumo }}</p>
 
       <div class="cartao-acoes">
-        <a class="btn-ouro btn-cartao" [href]="linkPlano(plano)" target="_blank" rel="noopener">
-          <svg class="icone-zap" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-12.4 7.4L3 20.5l1.7-5.4A8.4 8.4 0 1 1 21 11.5z"/></svg>
-          Fale comigo
-        </a>
+        <a app-fale-comigo class="btn-ouro btn-cartao" [plano]="plano"></a>
         <a
           class="btn-linha btn-mais"
           [routerLink]="['/plano', plano.id]"

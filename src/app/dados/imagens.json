@@ -1,0 +1,4 @@
+{
+  "larguras": [480, 960, 1600],
+  "padrao": "{nome}-{largura}.webp"
+}

@@ -21,7 +21,7 @@
     </a>
     <div class="avatar">
       @if (site.fotoPerfil) {
-        <img [src]="site.fotoPerfil" alt="Foto de perfil de {{ site.nome }}" />
+        <img app-foto [arquivo]="site.fotoPerfil" sizes="56px" alt="Foto de perfil de {{ site.nome }}" />
       } @else {
         foto
       }
@@ -35,6 +35,6 @@
 <!-- RODAPÉ -->
 <footer class="rodape">
   <span class="rodape-nome">{{ site.nome }}</span>
-  <span class="rodape-servicos">Motorista particular · Turismo · Chofer</span>
+  <span class="rodape-servicos">{{ rodapeServicos }}</span>
   <span class="rodape-copy">© {{ ano }} Todos os direitos reservados</span>
 </footer>

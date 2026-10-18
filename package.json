@@ -3,10 +3,19 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
+    "imagens": "node scripts/otimizar-imagens.mjs",
+    "seo": "node scripts/verificar-seo.mjs",
+    "seo:dev": "node scripts/verificar-seo.mjs --dev",
+    "prestart": "npm run imagens && npm run seo:dev",
     "start": "ng serve",
-    "build": "ng build"
+    "prebuild": "npm run imagens && npm run seo",
+    "build": "ng build",
+    "deploy": "vercel build --prod && vercel deploy --prebuilt --prod"
   },
   "private": true,
+  "engines": {
+    "node": "22.x"
+  },
   "dependencies": {
     "@angular/common": "^20.0.0",
     "@angular/compiler": "^20.0.0",
@@ -21,6 +30,7 @@
     "@angular/build": "^20.0.0",
     "@angular/cli": "^20.0.0",
     "@angular/compiler-cli": "^20.0.0",
+    "sharp": "^0.35.5",
     "typescript": "~5.8.0"
   }
 }

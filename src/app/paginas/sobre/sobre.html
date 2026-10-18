@@ -6,7 +6,7 @@
 
   <div class="sobre-foto">
     @if (site.fotoPerfil) {
-      <img [src]="site.fotoPerfil" alt="Foto de {{ site.nome }}" />
+      <img app-foto [arquivo]="site.fotoPerfil" sizes="140px" alt="Foto de {{ site.nome }}" />
     } @else {
       foto
     }
@@ -38,7 +38,7 @@
   <!-- FOTO DO CARRO (liga/desliga em site.config.ts > carroEm.sobre) -->
   @if (site.fotoCarro && site.carroEm.sobre) {
     <figure class="foto-carro">
-      <img [src]="site.fotoCarro" alt="Carro de {{ site.nome }}" />
+      <img app-foto [arquivo]="site.fotoCarro" sizes="(max-width: 860px) 100vw, 860px" alt="Carro de {{ site.nome }}" />
     </figure>
   }
 
@@ -46,8 +46,5 @@
     <p class="detalhe-texto">{{ site.sobreFecho }}</p>
   }
 
-  <a class="btn-ouro pagina-cta" [href]="linkGeral()" target="_blank" rel="noopener">
-    <svg class="icone-zap" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-12.4 7.4L3 20.5l1.7-5.4A8.4 8.4 0 1 1 21 11.5z"/></svg>
-    Fale comigo
-  </a>
+  <a app-fale-comigo class="btn-ouro pagina-cta"></a>
 </section>

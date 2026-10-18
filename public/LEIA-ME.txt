@@ -1,2 +1,5 @@
-Coloque aqui as imagens do site (perfil.jpg, carro.jpeg).
-Depois, em src/app/dados/site.config.ts, escreva o nome do arquivo em "fotoPerfil" e "fotoCarro".
+Coloque aqui as fotos do site: perfil.jpg, carro.jpeg e paisagem.jpeg.
+Depois, em src/app/dados/site.config.ts, escreva o nome do arquivo em "fotoPerfil", "fotoCarro" e "fotoPaisagem".
+
+As versões leves (WebP) e a imagem de prévia do WhatsApp (compartilhamento.jpg) são geradas
+sozinhas por "npm start" e "npm run build". Não precisa redimensionar as fotos à mão.

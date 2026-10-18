@@ -7,10 +7,17 @@ export interface Servico {
 }
 
 export interface Plano {
+  // Ao criar um plano novo, adicione também o ícone dele em componentes/icone-plano.ts
   id: 'motorista' | 'turismo' | 'chofer';
   titulo: string;
   resumo: string;
   detalhe: string;
+  // Título e descrição que aparecem no Google (o nome do site é acrescentado ao título).
+  // Título: até ~55 caracteres. Descrição: até ~155. Use palavras que o cliente pesquisaria.
+  seoTitulo: string;
+  seoDescricao: string;
+  // Mostra a foto de paisagem (site.config.ts > fotoPaisagem) no topo da página do plano
+  mostraPaisagem?: boolean;
   servicos: Servico[];
 }
 
@@ -18,6 +25,9 @@ export const PLANOS: Plano[] = [
   {
     id: 'motorista',
     titulo: 'Motorista particular',
+    seoTitulo: 'Motorista Particular em Recife',
+    seoDescricao:
+      'Motorista particular em Recife e região: traslado aeroporto, ida e volta, eventos e por hora. Pontualidade, conforto e discrição. Peça orçamento no WhatsApp.',
     resumo:
       'Deslocamentos do dia a dia com hora marcada: trabalho, consultas, aeroporto e eventos. Você relaxa, eu cuido do caminho.',
     detalhe:
@@ -32,6 +42,10 @@ export const PLANOS: Plano[] = [
   {
     id: 'turismo',
     titulo: 'Turismo',
+    seoTitulo: 'Passeios Privativos em Pernambuco e Nordeste',
+    seoDescricao:
+      'Passeios privativos saindo de Recife: Olinda, Porto de Galinhas, Carneiros, Maragogi e João Pessoa. Roteiro sob medida, sem excursão em grupo. Peça no WhatsApp.',
+    mostraPaisagem: true,
     resumo:
       'Descubra lugares incríveis do seu jeito. Conheça Recife, Olinda, Porto de Galinhas, Praia dos Carneiros, Maragogi e João Pessoa com passeios privativos planejados de acordo com seus interesses.',
     detalhe:
@@ -46,6 +60,9 @@ export const PLANOS: Plano[] = [
   {
     id: 'chofer',
     titulo: 'Chofer exclusivo',
+    seoTitulo: 'Chofer Particular Exclusivo em Recife',
+    seoDescricao:
+      'Chofer exclusivo em Recife por hora ou diária: casamentos, eventos, jantares e reuniões. Carro e chofer só seus, com conforto e discrição. Orçamento no WhatsApp.',
     resumo:
       'Serviço particular com disposição e exclusividade total: um chofer só seu, no horário que você precisar, com conforto, cuidado e discrição.',
     detalhe:

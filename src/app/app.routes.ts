@@ -1,11 +1,12 @@
 import { Routes } from '@angular/router';
-import { Home } from './paginas/home/home';
-import { PlanoPagina } from './paginas/plano/plano-pagina';
-import { Sobre } from './paginas/sobre/sobre';
 
+// Cada página é carregada só quando o visitante a abre (lazy loading)
 export const routes: Routes = [
-  { path: '', component: Home },
-  { path: 'plano/:id', component: PlanoPagina },
-  { path: 'sobre', component: Sobre },
+  { path: '', loadComponent: () => import('./paginas/home/home').then((m) => m.Home) },
+  {
+    path: 'plano/:id',
+    loadComponent: () => import('./paginas/plano/plano-pagina').then((m) => m.PlanoPagina),
+  },
+  { path: 'sobre', loadComponent: () => import('./paginas/sobre/sobre').then((m) => m.Sobre) },
   { path: '**', redirectTo: '' },
 ];

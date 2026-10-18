@@ -10,6 +10,11 @@ export const SITE = {
   // Nome que aparece no topo, no rodapé e nas mensagens
   nome: 'Seu Nome ou Marca',
 
+  // Endereço do site no ar, com https:// e sem barra no final. Ex.: 'https://rotaexclusiva.com.br'
+  // Enquanto estiver vazio, o site não gera canonical, og:url nem links absolutos de SEO.
+  // Quando mudar o endereço, troque também em public/robots.txt e public/sitemap.xml.
+  url: '',
+
   // WhatsApp com código do país + DDD + número, só dígitos. Exemplo: '5581999999999'
   whatsapp: '5500000000000',
 

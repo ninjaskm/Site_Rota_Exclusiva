@@ -7,6 +7,12 @@
 /public/carro.*
 /public/paisagem.*
 
+# Gerados por scripts/otimizar-imagens.mjs a partir das fotos acima
+/public/*-[0-9]*.webp
+/public/compartilhamento.jpg
+/public/favicon-48.png
+/public/apple-touch-icon.png
+
 # Fotos originais, antes de redimensionar
 /fotos-originais/
 /originais/
@@ -32,6 +38,7 @@ secrets.*
 # ---------- Dependências e build ----------
 /node_modules
 /dist
+/.vercel
 /out-tsc
 /tmp
 /coverage
@@ -61,3 +68,6 @@ ehthumbs.db
 desktop.ini
 ~$*
 *.tmp
+
+.vercel
+.env*
