@@ -1,5 +1,5 @@
 import { bootstrapApplication } from '@angular/platform-browser';
-import { Analytics } from "@vercel/analytics/next";
+import { inject } from '@vercel/analytics';
 import { appConfig } from './app/app.config';
 import { App } from './app/app';
 
