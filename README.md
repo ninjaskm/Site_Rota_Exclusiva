@@ -74,7 +74,7 @@ Coloque só as fotos originais em `public/`. O comando `npm start` e o `npm run 
 
 ## Publicar na Vercel
 
-O deploy sai da sua máquina, sem passar pelo GitHub: `site.config.ts` e as fotos estão no `.gitignore`, então o build precisa rodar onde eles existem. O `vercel.json` já traz o comando de build, a pasta de saída e as rotas, e desliga deploys automáticos pelo Git.
+O deploy sai da sua máquina, sem passar pelo GitHub: `site.config.ts` e as fotos estão no `.gitignore`, mas o `.vercelignore` faz a CLI enviá-los mesmo assim, e o build roda nos servidores da Vercel. O `vercel.json` traz o comando de build, a pasta de saída e as rotas, e desliga deploys automáticos pelo Git.
 
 Uma vez só:
 
@@ -82,7 +82,6 @@ Uma vez só:
 npm install -g vercel
 vercel login
 vercel link        # cria o projeto; se perguntar se quer conectar o GitHub, responda não
-vercel pull --yes --environment=production
 ```
 
 A cada publicação:
@@ -91,4 +90,4 @@ A cada publicação:
 npm run deploy
 ```
 
-O `npm run deploy` faz o build aqui (`vercel build --prod`, que roda o `npm run build` com as imagens e a checagem de SEO) e envia só o resultado pronto (`vercel deploy --prebuilt --prod`). Com `url` vazio, o aviso de SEO aparece, mas não impede o deploy. Quando tiver o domínio definitivo, preencha `site.config.ts > url`, `public/robots.txt` e `public/sitemap.xml` antes de publicar.
+O `npm run deploy` envia o projeto (`vercel deploy --prod --logs`) e a Vercel roda o `npm run build` lá, com as imagens e a checagem de SEO; os avisos aparecem no terminal. Não use `vercel build` nem `--prebuilt`: no Windows, a `vercel build` local falhou com `spawn cmd.exe ENOENT`. Com `url` vazio, o aviso de SEO aparece, mas não impede o deploy. Quando tiver o domínio definitivo, preencha `site.config.ts > url`, `public/robots.txt` e `public/sitemap.xml` antes de publicar.

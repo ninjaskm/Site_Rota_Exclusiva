@@ -1,0 +1,38 @@
+# Define o que a CLI da Vercel envia no "npm run deploy".
+# Com este arquivo, o .gitignore NÃO é usado: site.config.ts e as fotos de public/ sobem
+# normalmente, e o build roda nos servidores da Vercel.
+
+# Dependências e saídas de build (a Vercel instala e gera de novo)
+/node_modules
+/dist
+/.angular
+/out-tsc
+/coverage
+/tmp
+/.vercel
+/.git
+
+# Segredos e logs (o .env.local guarda o token da Vercel: nunca enviar)
+.env
+.env.*
+*.pem
+*.key
+*.log
+
+# Gerados pelo build em public/ a partir das fotos originais
+/public/*-[0-9]*.webp
+/public/compartilhamento.jpg
+/public/favicon-48.png
+/public/apple-touch-icon.png
+
+# Não fazem parte do site
+/skill
+/.claude
+/.cursor
+/.agents
+/fotos-originais
+/originais
+CLAUDE.md
+AGENTS.md
+desktop.ini
+Thumbs.db
