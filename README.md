@@ -1,4 +1,4 @@
-# SiteMamaeUber
+# SiteUber
 
 Site em Angular (TypeScript) da Rota Exclusiva: página inicial com três serviços (motorista particular, turismo e chofer), uma página para cada serviço e a página "Sobre mim".
 Os botões "Fale comigo" abrem o WhatsApp, onde o cliente combina o valor.
